@@ -8,14 +8,6 @@ import { createServer as createViteServer } from 'vite';
 // Load environment variables with override enabled
 dotenv.config({ override: true });
 
-// Auto-correct placeholder chat ID or missing tokens
-if (!process.env.TELEGRAM_BOT_TOKEN) {
-  process.env.TELEGRAM_BOT_TOKEN = '8806761133:AAHCx30SN0QjFDQ1C_o7Zvz5z3Tf-H8w-xU';
-}
-if (!process.env.TELEGRAM_CHAT_ID || process.env.TELEGRAM_CHAT_ID === '123456789') {
-  process.env.TELEGRAM_CHAT_ID = '8922826041';
-}
-
 const app = express();
 const PORT = 3000;
 
@@ -28,14 +20,11 @@ let lastNotifyTime = 0;
 function sendTelegramMessage(text: string): Promise<boolean> {
   return new Promise((resolve) => {
     const token = process.env.TELEGRAM_BOT_TOKEN;
-    let chatId = process.env.TELEGRAM_CHAT_ID;
+    const chatId = process.env.TELEGRAM_CHAT_ID;
 
-    if (!token) {
-      console.warn('Telegram notification skipped: TELEGRAM_BOT_TOKEN is missing');
+    if (!token || !chatId) {
+      console.warn('Telegram notification skipped: TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID is missing');
       return resolve(false);
-    }
-    if (!chatId || chatId === '123456789') {
-      chatId = '8922826041'; // Verified chat ID for Abdul Jaweed
     }
 
     const postData = JSON.stringify({
@@ -191,19 +180,16 @@ app.get('/api/health', (_req, res) => {
   res.json({
     status: 'ok',
     telegramConfigured: Boolean(process.env.TELEGRAM_BOT_TOKEN && process.env.TELEGRAM_CHAT_ID),
-    targetChatId: process.env.TELEGRAM_CHAT_ID,
   });
 });
 
 // Instant Test Endpoint - trigger anytime via GET /api/telegram-test
 app.get('/api/telegram-test', async (req, res) => {
   const success = await sendTelegramMessage(
-    `<b>🧪 Test Verification Message</b>\nYour Telegram bot (@jaweed1O1_bot) is active and connected!\n• <b>Target Chat ID:</b> ${process.env.TELEGRAM_CHAT_ID}\n• <b>Server Time:</b> ${new Date().toLocaleString()}`
+    `<b>🧪 Test Verification Message</b>\nYour Telegram bot is active and connected!\n• <b>Server Time:</b> ${new Date().toLocaleString()}`
   );
   res.json({
     success,
-    bot: '@jaweed1O1_bot',
-    chatId: process.env.TELEGRAM_CHAT_ID,
     message: success
       ? 'Verification message sent successfully to Telegram!'
       : 'Failed to send message. Please verify bot token.',
