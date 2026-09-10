@@ -39,7 +39,17 @@ function sendTelegramMessage(text: string) {
         'Content-Length': Buffer.byteLength(postData),
       },
     },
-    () => {}
+    (res) => {
+      let responseBody = '';
+      res.on('data', (d) => { responseBody += d; });
+      res.on('end', () => {
+        if (res.statusCode && res.statusCode >= 400) {
+          console.error(`Telegram API error (${res.statusCode}):`, responseBody);
+        } else {
+          console.log('Telegram visitor notification sent successfully.');
+        }
+      });
+    }
   );
 
   req.on('error', (err) => {
