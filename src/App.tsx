@@ -37,6 +37,25 @@ export default function App() {
     }
   }, [darkMode]);
 
+  // Client-side visitor notification trigger on initial page load
+  useEffect(() => {
+    try {
+      const hasTracked = sessionStorage.getItem('aj_visited');
+      if (!hasTracked) {
+        sessionStorage.setItem('aj_visited', 'true');
+        fetch('/api/track-visit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            page: window.location.pathname + window.location.search,
+            referrer: document.referrer || 'Direct Visit',
+            screen: `${window.screen.width}x${window.screen.height}`,
+          }),
+        }).catch(() => {});
+      }
+    } catch {}
+  }, []);
+
   const handleTriggerSimulation = () => {
     const el = document.getElementById('architecture');
     if (el) {
