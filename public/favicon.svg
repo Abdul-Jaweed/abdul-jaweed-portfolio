@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#09090b"/>
+      <stop offset="100%" stop-color="#18181b"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Outer Frame -->
+  <rect width="100" height="100" rx="24" fill="url(#bgGrad)"/>
+  <rect x="2" y="2" width="96" height="96" rx="22" fill="none" stroke="#27272a" stroke-width="2"/>
+  
+  <!-- Profile Avatar Silhouette & AI Circuit -->
+  <path d="M50 22 C39 22 30 31 30 42 C30 50 35 57 42 60 C28 66 22 76 20 85 L80 85 C78 76 72 66 58 60 C65 57 70 50 70 42 C70 31 61 22 50 22 Z" fill="#3f3f46"/>
+  <path d="M50 26 C41 26 34 33 34 42 C34 49 39 55 45 57 C33 63 28 72 26 80 L74 80 C72 72 67 63 55 57 C61 55 66 49 66 42 C66 33 59 26 50 26 Z" fill="#fafafa"/>
+  
+  <!-- AI Node Accent Badge -->
+  <circle cx="75" cy="25" r="7" fill="url(#accentGrad)" />
+  <circle cx="75" cy="25" r="3" fill="#ffffff" />
+  
+  <!-- Monogram Logo Overlay -->
+  <text x="50" y="53" font-family="'JetBrains Mono', monospace" font-size="20" font-weight="900" fill="#09090b" text-anchor="middle">AJ</text>
+</svg>
