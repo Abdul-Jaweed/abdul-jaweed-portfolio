@@ -61,7 +61,7 @@ Skills
 ${skillCategoriesData.map((cat) => `${cat.title}: ${cat.skills.map((s) => s.name).join(', ')}`).join('\n')}
 
 My Personal Projects Turn into Open Source Contributions
-${projectsData.slice(0, 2).map((p) => `${p.title} — ${p.subtitle}\nStatus: ${p.status}\n\n${p.description}\n\nTech Used: ${p.techStack.join(', ')}\n\n${p.contributions.map((c) => `• ${c}`).join('\n')}`).join('\n\n')}
+${projectsData.map((p) => `${p.title} — ${p.subtitle}\nStatus: ${p.status}\n\n${p.description}\n\nTech Used: ${p.techStack.join(', ')}\n\n${p.contributions.map((c) => `• ${c}`).join('\n')}`).join('\n\n')}
 
 Achievement
 ${achievementsData[0].title}
@@ -103,6 +103,15 @@ ${educationData.map((ed) => `${ed.degree}, ${ed.institution}\n• Cumulative CGP
           </div>
 
           <div className="flex items-center gap-2">
+            <a
+              href="/Abdul_Jaweed_Resume.pdf"
+              download="Abdul_Jaweed_Resume.pdf"
+              className="px-3 py-1.5 rounded-lg text-xs font-mono font-bold flex items-center gap-1.5 bg-emerald-600 text-white hover:bg-emerald-500 transition-colors shadow-sm cursor-pointer"
+            >
+              <Download className="w-3.5 h-3.5" />
+              <span>Download PDF</span>
+            </a>
+
             <button
               onClick={handlePrint}
               className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold flex items-center gap-1.5 border cursor-pointer ${
@@ -110,7 +119,7 @@ ${educationData.map((ed) => `${ed.degree}, ${ed.institution}\n• Cumulative CGP
               }`}
             >
               <Printer className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Print / Save PDF</span>
+              <span className="hidden sm:inline">Print</span>
             </button>
 
             <button
@@ -120,7 +129,7 @@ ${educationData.map((ed) => `${ed.degree}, ${ed.institution}\n• Cumulative CGP
               }`}
             >
               {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-              <span>{copied ? 'Copied Text!' : 'Copy Resume Text'}</span>
+              <span>{copied ? 'Copied!' : 'Copy Text'}</span>
             </button>
 
             <button
@@ -229,7 +238,7 @@ ${educationData.map((ed) => `${ed.degree}, ${ed.institution}\n• Cumulative CGP
               PERSONAL PROJECTS TURN INTO OPEN SOURCE CONTRIBUTION
             </h2>
 
-            {projectsData.slice(0, 2).map((proj) => (
+            {projectsData.map((proj) => (
               <div key={proj.id} className="space-y-1.5 text-xs">
                 <div className={`flex justify-between items-baseline font-bold text-sm ${darkMode ? 'text-white' : 'text-black'}`}>
                   <span>{proj.title} — {proj.subtitle}</span>

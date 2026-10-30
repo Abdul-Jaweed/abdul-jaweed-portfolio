@@ -113,8 +113,10 @@ export default async function handler(req: any, res: any) {
     return res.status(200).end();
   }
 
-  const token = process.env.TELEGRAM_BOT_TOKEN;
-  const chatId = process.env.TELEGRAM_CHAT_ID;
+  const rawToken = process.env.TELEGRAM_BOT_TOKEN || '';
+  const rawChatId = process.env.TELEGRAM_CHAT_ID || '';
+  const token = rawToken.replace(/^["']|["']$/g, '').trim();
+  const chatId = rawChatId.replace(/^["']|["']$/g, '').trim();
 
   if (!token || !chatId) {
     console.warn('Telegram token or chat ID is missing in environment variables');

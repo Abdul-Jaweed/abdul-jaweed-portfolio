@@ -56,7 +56,10 @@ export const Skills: React.FC<SkillsProps> = ({ darkMode }) => {
 
   const categoryIcons: Record<string, React.FC<{ className?: string }>> = {
     programming: Terminal,
+    'ml-nlp': Brain,
     'ai-llm': Cpu,
+    orchestration: Workflow,
+    'knowledge-graphs': Network,
     backend: Server,
     databases: Database,
     security: ShieldCheck,
@@ -64,13 +67,15 @@ export const Skills: React.FC<SkillsProps> = ({ darkMode }) => {
     devops: Box,
     aws: Cloud,
     finetuning: Sliders,
+    'ai-coding': Terminal,
     architecture: Layers,
   };
 
   const getSkillIcon = (skillName: string): React.FC<{ className?: string }> => {
     const s = skillName.toLowerCase();
     if (s.includes('python')) return Terminal;
-    if (s.includes('langgraph') || s.includes('workflow')) return Workflow;
+    if (s.includes('neo4j') || s.includes('cypher') || s.includes('graph') || s.includes('ontology') || s.includes('taxonomy')) return Network;
+    if (s.includes('langgraph') || s.includes('workflow') || s.includes('orchestrat')) return Workflow;
     if (s.includes('langchain') || s.includes('chain')) return Network;
     if (s.includes('langsmith') || s.includes('langfuse') || s.includes('telemetry') || s.includes('logging') || s.includes('trace')) return Activity;
     if (s.includes('litellm') || s.includes('gateway')) return Server;
@@ -83,14 +88,15 @@ export const Skills: React.FC<SkillsProps> = ({ darkMode }) => {
     if (s.includes('postgres') || s.includes('pgvector') || s.includes('sql') || s.includes('qdrant') || s.includes('mongo') || s.includes('redis')) return Database;
     if (s.includes('s3') || s.includes('storage') || s.includes('data')) return HardDrive;
     if (s.includes('zitadel') || s.includes('auth') || s.includes('oauth') || s.includes('oidc') || s.includes('jwt') || s.includes('cognito') || s.includes('key')) return Key;
-    if (s.includes('cerbos') || s.includes('security') || s.includes('rls') || s.includes('rbac') || s.includes('policy') || s.includes('waf') || s.includes('shield')) return Lock;
+    if (s.includes('cerbos') || s.includes('security') || s.includes('rls') || s.includes('rbac') || s.includes('policy') || s.includes('waf') || s.includes('guardrail')) return Lock;
     if (s.includes('docker') || s.includes('ecr')) return Box;
     if (s.includes('git')) return GitBranch;
     if (s.includes('aws') || s.includes('cloud') || s.includes('ec2') || s.includes('vpc') || s.includes('lambda') || s.includes('railway')) return Cloud;
     if (s.includes('bedrock') || s.includes('sagemaker') || s.includes('model') || s.includes('llm') || s.includes('brain')) return Brain;
+    if (s.includes('cursor') || s.includes('claude') || s.includes('codex') || s.includes('opencode') || s.includes('hermes') || s.includes('antigravity')) return Terminal;
     if (s.includes('lora') || s.includes('qlora') || s.includes('finetun') || s.includes('distill') || s.includes('rlhf') || s.includes('dpo')) return Sliders;
     if (s.includes('metric') || s.includes('eval') || s.includes('drift')) return Gauge;
-    if (s.includes('pandas') || s.includes('numpy')) return LineChart;
+    if (s.includes('pandas') || s.includes('numpy') || s.includes('scikit') || s.includes('regression') || s.includes('classification')) return LineChart;
     return Code;
   };
 

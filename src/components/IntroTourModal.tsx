@@ -55,8 +55,8 @@ export const IntroTourModal: React.FC<IntroTourModalProps> = ({
       title: 'Welcome to Abdul Jaweed’s Portfolio',
       badge: 'Step 1 of 5 • Overview',
       description:
-        'Explore enterprise-grade AI platforms, MLOps orchestration systems, and multi-tenant architectures engineered with Python, FastAPI, ClickHouse, LangGraph, and ZITADEL.',
-      tip: 'Use the top navigation bar or this guided tour to discover interactive simulations and tools.',
+        'Explore enterprise-grade AI platforms, Knowledge Graph systems (Neo4j, Cypher, GraphRAG), multi-agent architectures (LangGraph, MCP), and unified MLOps engines (MLFast-OSS) engineered with Python, FastAPI, and AWS Bedrock.',
+      tip: 'Use the top navigation bar or this guided tour to discover interactive simulations, project deep-dives, and tools.',
       icon: Compass,
       actionLabel: 'View About Profile',
       actionHref: '#about',
@@ -65,7 +65,7 @@ export const IntroTourModal: React.FC<IntroTourModalProps> = ({
       title: 'Real-Time Architecture Simulation',
       badge: 'Step 2 of 5 • Interactive Simulation',
       description:
-        'Watch live request dispatching across Tyk API Gateway, Cerbos Policy-as-Code, LiteLLM model fallback, LangGraph multi-agent supervisors, ClickHouse OLAP, and Langfuse tracing.',
+        'Watch live request dispatching across Tyk Gateway, Cerbos Policy-as-Code, Neo4j Knowledge Graph schema enrichment, LiteLLM fallback, LangGraph multi-agent supervisors, ClickHouse OLAP, and OpenTelemetry/Langfuse tracing.',
       tip: 'You can test custom prompt queries or trigger the automated multi-step simulation flow.',
       icon: Layers,
       actionLabel: 'Launch Architecture Flow',

@@ -172,6 +172,20 @@ export const WorkableTerminal: React.FC<WorkableTerminalProps> = ({
         );
         break;
 
+      case 'graph':
+      case 'neo4j':
+      case 'graphrag':
+        outputNode = (
+          <div className="space-y-1.5 font-mono text-xs">
+            <div className="text-emerald-400 font-bold">KNOWLEDGE GRAPH & GRAPHRAG ARCHITECTURE:</div>
+            <div className="text-neutral-300">Engineered with Neo4j, Cypher, GDS, and APOC procedures.</div>
+            <div className="text-neutral-400">• Dynamic schema graph modeling with taxonomy and ontology hierarchies.</div>
+            <div className="text-neutral-400">• Pluggable Knowledge Graph Memory integrated into LangGraph multi-agent loops.</div>
+            <div className="text-cyan-400">• Cypher index optimization and traversal for deterministic sub-15ms entity recall.</div>
+          </div>
+        );
+        break;
+
       case 'simulate':
         onTriggerSimulation();
         outputNode = (

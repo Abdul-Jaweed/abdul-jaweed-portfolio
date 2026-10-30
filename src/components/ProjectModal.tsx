@@ -26,14 +26,38 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
 
   if (!project) return null;
 
-  const simLogs = [
-    { text: `[${project.title}] Initializing runtime dependencies...`, time: '0.00s' },
-    { text: `[AUTH] ZITADEL OIDC JWT verification passed for multi-tenant workspace`, time: '0.04s' },
-    { text: `[GATEWAY] LiteLLM unified router dispatched prompt -> vLLM / OpenAI`, time: '0.12s' },
-    { text: `[AGENT] LangGraph supervisor executing step 1: SQLGlot AST validation`, time: '0.22s' },
-    { text: `[DATABASE] ClickHouse OLAP query executed (14ms). 12 records returned.`, time: '0.31s' },
-    { text: `[OBSERVED] OpenTelemetry trace recorded -> Langfuse prompt trace synced.`, time: '0.35s' },
-  ];
+  const getSimLogs = () => {
+    if (project.id === 'datahek-oss') {
+      return [
+        { text: '[DataHek OSS] Initializing conversational query runtime...', time: '0.00s' },
+        { text: '[KNOWLEDGE GRAPH] Neo4j schema graph loaded taxonomy & ontology relationships', time: '0.05s' },
+        { text: '[PLANNER] LLM agent synthesized provider-agnostic Logical Query Plan (LQP)', time: '0.14s' },
+        { text: '[GUARDRAILS] Deterministic validation: read-only confirmed, zero DDL/DML mutation', time: '0.21s' },
+        { text: '[DATABASE] ClickHouse/PostgreSQL dialect connector executed query (12ms)', time: '0.29s' },
+        { text: '[SSE STREAM] Live pipeline progress & explanation streamed to client', time: '0.34s' },
+      ];
+    }
+    if (project.id === 'mlfast-oss') {
+      return [
+        { text: '[MLFast-OSS] Bootstrapping unified MLOps platform daemon...', time: '0.00s' },
+        { text: '[GOVERNANCE] Multi-tenant JWT & RBAC verified quota policy limits', time: '0.04s' },
+        { text: '[DATASET] Versioned dataset checksums verified against S3/RustFS', time: '0.11s' },
+        { text: '[CI/CD QUALITY] 1,729 automated tests & 14 Playwright E2E specs passed', time: '0.19s' },
+        { text: '[DEPLOYMENT] Model registry quality gate approved containerized serving', time: '0.27s' },
+        { text: '[DRIFT MONITORING] Celery worker scheduled policy-driven retraining DAG', time: '0.35s' },
+      ];
+    }
+    return [
+      { text: `[${project.title}] Initializing high-level ML runtime...`, time: '0.00s' },
+      { text: '[PREPROCESSING] Configurable StandardScaler & one-hot encoding applied', time: '0.04s' },
+      { text: '[MODEL SELECTION] Ensembled Random Forest, SVM & Gradient Boosting algorithms', time: '0.12s' },
+      { text: '[OPTIMIZATION] Hyperparameter search executed with 4-5 words of code', time: '0.20s' },
+      { text: '[CI/CD] Automated GitHub Actions & CircleCI package verification passed', time: '0.28s' },
+      { text: '[PYPI PACKAGE] Model artifacts exported and ready for production inference', time: '0.34s' },
+    ];
+  };
+
+  const simLogs = getSimLogs();
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-black/80 backdrop-blur-sm animate-fadeIn">

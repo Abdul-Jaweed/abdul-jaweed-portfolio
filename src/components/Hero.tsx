@@ -145,7 +145,7 @@ export const Hero: React.FC<HeroProps> = ({
                 darkMode ? 'text-neutral-400' : 'text-neutral-600'
               }`}
             >
-              Building enterprise AI applications, LLM agents (LangGraph, MCP), production Memory-as-a-Service (MaaS) systems at Human Managed, open-source data platforms (DataHek OSS), and high-level ML libraries (MLFAST).
+              Building enterprise AI applications, knowledge graph systems (Neo4j, Cypher, GraphRAG), multi-agent architectures (LangGraph, MCP), unified MLOps platforms (MLFast-OSS), production MaaS memory platforms at Human Managed, and conversational data platforms (DataHek OSS).
             </p>
 
             {/* Core Tech Stack Badges */}
@@ -154,13 +154,15 @@ export const Hero: React.FC<HeroProps> = ({
                 'Python',
                 'FastAPI',
                 'LangGraph',
+                'Neo4j / GraphRAG',
+                'AWS Bedrock',
+                'Azure OpenAI',
                 'LiteLLM',
-                'ClickHouse',
                 'PostgreSQL (pgvector)',
                 'Qdrant',
-                'MCP Server',
-                'Docker',
-                'ZITADEL',
+                'MCP Protocol',
+                'Docker & K8s',
+                'ZITADEL & Cerbos',
               ].map((tech) => (
                 <span
                   key={tech}
@@ -201,6 +203,25 @@ export const Hero: React.FC<HeroProps> = ({
                 <span>Architecture</span>
               </a>
 
+              <button
+                onClick={onOpenResumeModal}
+                className={`inline-flex items-center gap-2 px-5 py-3 rounded text-xs font-mono uppercase tracking-[0.2em] font-bold border transition-all cursor-pointer ${
+                  darkMode
+                    ? 'border-neutral-700 text-neutral-300 hover:text-white hover:border-white'
+                    : 'border-neutral-300 text-neutral-700 hover:text-black hover:border-black'
+                }`}
+              >
+                <span>Resume Modal</span>
+              </button>
+
+              <a
+                href="/Abdul_Jaweed_Resume.pdf"
+                download="Abdul_Jaweed_Resume.pdf"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded text-xs font-mono uppercase tracking-[0.2em] font-bold bg-emerald-600 text-white hover:bg-emerald-500 transition-all shadow-sm cursor-pointer"
+              >
+                <span>Download PDF</span>
+              </a>
+
               {onOpenIntroTour && (
                 <button
                   onClick={onOpenIntroTour}
@@ -211,20 +232,9 @@ export const Hero: React.FC<HeroProps> = ({
                   }`}
                 >
                   <Compass className="w-3.5 h-3.5" />
-                  <span>Intro Tour</span>
+                  <span>Tour</span>
                 </button>
               )}
-
-              <button
-                onClick={onOpenResumeModal}
-                className={`inline-flex items-center gap-2 px-5 py-3 rounded text-xs font-mono uppercase tracking-[0.2em] font-bold border transition-all cursor-pointer ${
-                  darkMode
-                    ? 'border-neutral-700 text-neutral-300 hover:text-white hover:border-white'
-                    : 'border-neutral-300 text-neutral-700 hover:text-black hover:border-black'
-                }`}
-              >
-                <span>Interactive Resume</span>
-              </button>
             </div>
 
             {/* Contact Links Bar */}

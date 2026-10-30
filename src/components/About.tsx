@@ -15,25 +15,32 @@ interface AboutProps {
 export const About: React.FC<AboutProps> = ({ darkMode }) => {
   const pillars = [
     {
-      icon: Server,
-      title: 'AI Infrastructure & Gateways',
+      icon: Layers,
+      title: 'Knowledge Graph Engineering & GraphRAG',
       description:
-        'Architecting centralized LiteLLM gateways for unified model routing, fallback policies, rate limiting, and prompt management across cloud and open-source models.',
-      badge: 'LiteLLM • Tyk • FastAPI',
+        'Modeling complex domain taxonomies, ontologies, and entity-relationships in Neo4j using Cypher, GDS, and APOC to deliver grounded context and eliminate hallucinations.',
+      badge: 'Neo4j • Cypher • GDS • APOC • GraphRAG',
+    },
+    {
+      icon: Server,
+      title: 'Multi-Agent Systems & MCP Protocols',
+      description:
+        'Orchestrating stateful multi-agent DAGs using LangGraph, Model Context Protocol (MCP) servers, tool integration, and real-time Server-Sent Events (SSE) streaming.',
+      badge: 'LangGraph • MCP • SSE • LiteLLM',
     },
     {
       icon: Lock,
-      title: 'Multi-Tenant Security & Governance',
+      title: 'Enterprise Security & 6-Layer Guardrails',
       description:
-        'Enforcing Row-Level Security (RLS) in PostgreSQL, ZITADEL OIDC identity, Cerbos Policy-as-Code authorization, prompt injection detection, and SQL DDL/DML blocking.',
-      badge: 'ZITADEL • Cerbos • RLS • PII Masking',
+        'Enforcing multi-tenant isolation via Row-Level Security (RLS), ZITADEL OIDC, Cerbos Policy-as-Code, 6-layer guardrails, prompt injection filtering, and audit logging.',
+      badge: '6-Layer Guardrails • Cerbos • ZITADEL • RLS',
     },
     {
-      icon: Layers,
-      title: 'LLM Orchestration & Agent Memory',
+      icon: Terminal,
+      title: 'Unified MLOps & Production Platforms',
       description:
-        'Building stateful multi-agent workflows using LangGraph and Model Context Protocol (MCP) servers, backed by externalized Memory-as-a-Service (MaaS) platforms.',
-      badge: 'LangGraph • MCP • pgvector • Qdrant',
+        'Architecting end-to-end MLOps platforms (MLFast-OSS) and Python ML libraries (MLFAST on PyPI) with automated CI/CD quality gates, 1,729 tests, and containerized deployment.',
+      badge: 'FastAPI • Redis • Docker • K8s • CI/CD',
     },
   ];
 
@@ -111,8 +118,8 @@ export const About: React.FC<AboutProps> = ({ darkMode }) => {
           </div>
         </div>
 
-        {/* 3 Pillars Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+        {/* 4 Pillars Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
           {pillars.map((pillar, index) => (
             <div
               key={index}

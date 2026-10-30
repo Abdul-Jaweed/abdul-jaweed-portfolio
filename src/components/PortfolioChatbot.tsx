@@ -73,9 +73,9 @@ export const PortfolioChatbot: React.FC<PortfolioChatbotProps> = ({
     const query = userText.toLowerCase().trim();
 
     if (query.includes('project') || query.includes('work') || query.includes('portfolio') || query.includes('built')) {
-      const topProjects = projectsData.slice(0, 2).map((p) => `• ${p.title}: ${p.subtitle}`).join('\n');
+      const topProjects = projectsData.map((p) => `• ${p.title} (${p.subtitle})`).join('\n');
       return {
-        responseText: `Abdul Jaweed's open-source projects include:\n\n${topProjects}\n\n• DataHek OSS: Universal Conversational Data Platform converting natural language into validated SQL with MCP, multi-agent workflows, and live SSE streaming.\n• MLFAST: Python Machine Learning Library built on Scikit-Learn published on PyPI.\n\nNote: Memory-as-a-Service (MaaS) is part of his enterprise AI Engineering experience at Human Managed.`,
+        responseText: `Abdul Jaweed's open-source and platform projects include:\n\n${topProjects}\n\n1. DataHek OSS: Universal Conversational Data Platform converting natural language questions into validated, read-only SQL queries with Neo4j schema graphs, MCP, and real-time SSE streaming.\n2. MLFast-OSS: End-to-end, multi-tenant MLOps platform unifying dataset management, training DAGs, drift monitoring, 1,729 automated tests, and Next.js control plane.\n3. MLFAST: High-level Python ML library published on PyPI simplifying scikit-learn modeling in 4-5 words of code.\n\nAt Human Managed, he also built the production AI Security Assistant with 6-layer guardrails and Knowledge Graph Memory using Neo4j and GraphRAG.`,
         buttons: [
           { label: 'Simulate Pipeline Flow', action: onTriggerSimulation, icon: Sparkles },
           { label: 'Open Official Resume', action: onOpenResumeModal, icon: FileText },
@@ -83,10 +83,20 @@ export const PortfolioChatbot: React.FC<PortfolioChatbotProps> = ({
       };
     }
 
+    if (query.includes('graph') || query.includes('neo4j') || query.includes('cypher') || query.includes('ontology') || query.includes('rag')) {
+      return {
+        responseText: `Abdul Jaweed specializes in Knowledge Graph Engineering and GraphRAG:\n\n• Built pluggable Knowledge Graph Memory using Neo4j, Cypher/OpenCypher, and APOC.\n• Experienced in ontology and taxonomy modeling, graph topology, and entity resolution.\n• Optimized Neo4j database workloads via Cypher query tuning, index optimization, and APOC procedures.\n• Created Neo4j schema knowledge graphs in DataHek OSS to enrich agent context and improve SQL reasoning.`,
+        buttons: [
+          { label: 'Run Architecture Flow', action: onTriggerSimulation, icon: Sparkles },
+          { label: 'View Experience', action: () => handlePresetQuery('Tell me about your experience'), icon: Terminal },
+        ],
+      };
+    }
+
     if (query.includes('mlops') || query.includes('experience') || query.includes('role') || query.includes('job') || query.includes('company')) {
       const topExp = experiencesData.map((e) => `• ${e.role} @ ${e.company} (${e.period}, ${e.location})`).join('\n');
       return {
-        responseText: `Abdul Jaweed is an AI Engineer with 3+ years of experience designing and building enterprise AI applications and backend systems:\n\n${topExp}\n\nAt Human Managed, he designed the Memory-as-a-Service (MaaS) platform (FastAPI, pgvector, Qdrant, Redis, RLS, LangGraph checkpoints) and the production AI security assistant with 6-layer guardrails.`,
+        responseText: `Abdul Jaweed has 3+ years of experience designing and building enterprise AI applications, knowledge graph systems, and production platforms:\n\n${topExp}\n\n• Human Managed (Singapore): Built production AI security assistant (FastAPI, SSE, MCP, AWS Bedrock, LiteLLM), 6-layer AI guardrails, Neo4j Knowledge Graph Memory, and Memory-as-a-Service (MaaS).\n• Capital Placement (UK): Built AI-powered candidate recommendation workflows with OpenAI, Llama 3, Mistral, and an automated 10-minute AI interviewer.\n• Margdarshan (India): Built Generative AI Q&A chatbot and automated text summarization pipeline using Hugging Face BART and CI/CD automation.`,
       };
     }
 

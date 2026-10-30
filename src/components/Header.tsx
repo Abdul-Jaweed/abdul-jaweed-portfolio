@@ -282,6 +282,14 @@ export const Header: React.FC<HeaderProps> = ({
               <FileText className="w-4 h-4" />
               Open Interactive Resume
             </button>
+            <a
+              href="/Abdul_Jaweed_Resume.pdf"
+              download="Abdul_Jaweed_Resume.pdf"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full flex items-center justify-center gap-2 py-2.5 rounded bg-emerald-600 text-white font-mono font-bold text-xs uppercase tracking-widest hover:bg-emerald-500 transition-colors shadow-sm cursor-pointer"
+            >
+              Download Resume PDF
+            </a>
           </div>
         </div>
       )}
